@@ -1,3 +1,10 @@
+
+
+*.pdf
+!corentinvsdavidtheret.pdf
+!figures/*/pdf
+
+todo
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
