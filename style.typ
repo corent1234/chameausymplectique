@@ -59,6 +59,7 @@
 #let proof = thmproof("proof", "Preuve")
 
 #let exo = thmplain("exercice", "Exercice")
+#let rappel = thmplain("rappel", "Rappel")
 
 #let cor = thmbox("correction", "Correction", fill:rgb("#eeffee"))
 

@@ -1,5 +1,5 @@
 //
-#import "style.typ": conf, afficherTitre, theorem, proposition, proof, definition, remark, example, propdef, lemma, numbered_eq
+#import "style.typ": conf, afficherTitre, theorem, proposition, proof, definition, remark, example, propdef, lemma, numbered_eq, rappel
 #import "shortcut.typ":*
 #import "todo.typ" : *
 
@@ -85,7 +85,7 @@ Q(aa,bb;gg) (u,v) &= sigma(C u, v)\
                   &= sigma(u + C u, v + C v) + Q(aa,bb;gg) (v,u). // & "car "aa" est Lagrangien" \
 $
 
-Ainsi, $Q(aa,bb;gg)$ est symétrique ssi $sigma(u + C u, v + C v)=0$ pour tous $u,v in aa$ càd ssi $gg$ est Lagragien par définition de $C$.
+Ainsi, $Q(aa,bb;gg)$ est symétrique ssi $sigma(u + C u, v + C v)=0$ pour tous $u,v in aa$ càd ssi $gg$ est Lagrangien par définition de $C$.
 ]
 
 #proposition[ Soient $aa,bb in Lambda(n)$ transverses.
@@ -121,11 +121,11 @@ Or l'application $v!>u$ est la restriction $bb$ de la projection sur $aa$ parall
 Fixons maintenant $aa,bb,gg in Lambda(n)$ tqs $bb trans gg$. On généralise désormais par réduction symplectique la définition de $QQ$ au cas où $aa$ et $bb$ ne sont pas transverses. 
 
 Les Lagrangiens $aa$ et $bb$ étant isotropes, $aa inter bb$ le sera également et l'image par $pi : aa+ bb to (aa+bb) slash (aa inter bb)$ d'un Lagrangien $FF$ intersecté avec $aa+bb$ sera un Lagrangien de $aa+bb slash (aa inter bb)$. On pose donc dans ce cas
-#numbered_eq[$ QQ := Q(pi_* aa, pi_* bb; pi_* gg )$]<eqformequadquotient>
+#numbered_eq[$ QQ := Q(pi aa, pi bb; pi gg )$]<eqformequadquotient>
 
 #proposition[Si $gg$ est également transverse à $aa$ alors les formes $QQ$ et $Q(bb,gg;aa')$ vue comme une forme bilinéaire sur $bb slash (aa inter bb)$ sont conjuguées (donc en particulier de même signature).]
 
-#proof[Soit $C : bb to gg$ cadre Lagrangien pour $aa$. On montre facilement que $pi C$ descend au quotient en une application $tilde(C) : pi_* bb to pi_* gg$ qui est un cadre Lagrangien pour $pi_* aa$. Ainsi, $Q(bb,gg;aa)$ restreinte à $pi_* bb$ est égale à $Q(pi_* bb, pi_*gg; pi_* aa)$ qui est conjuguée à $ QQ := Q(pi_* aa, pi_* bb; pi_* gg )$ par le point 2. de la proposition @propQabc.]
+#proof[Soit $C : bb to gg$ cadre Lagrangien pour $aa$. On montre facilement que $pi C$ descend au quotient en une application $tilde(C) : pi bb to pi gg$ qui est un cadre Lagrangien pour $pi aa$. Ainsi, $Q(bb,gg;aa)$ restreinte à $pi bb$ est égale à $Q(pi bb, pi gg; pi aa)$ qui est conjuguée à $ QQ := Q(pi aa, pi bb; pi gg )$ par le point 2. de la proposition @propQabc.]
 
 
 
@@ -213,7 +213,7 @@ $
 ] #todo[I'm too tired for this shit]
 
 #propdef[Soit $L:[0,1] to Lambda(n)$ et $aa in Lambda^0(L_0) inter Lambda^0(L_1)$. L'entier $ ind (L) := [L:aa] + ind Q(L_1,aa;L_0)$ ne dépend pas du choix de $aa$. On l'appelle *indice de Maslov-Duistermaat de $L$*.
-]
+]<defMD>
 
 #proof[Soit $aa' in Lambda(n)$ transverse à $L_0$ et $L_1$. La forme quadratique $Q(L_1,aa;L_0)$ étant non dégénérée, $ind Q(L_1,aa;L_0)= n - 1/2 sgn Q(L_1,aa;L_0)$. Ainsi, par #tolink[Oui le calcul]
 
@@ -361,22 +361,21 @@ On considère $h : [0,+oo] -> [-oo,0]$ vérifiant :
 + $h' eq.triple c$ sur $[eps,rho-eps]$
 + $h$ est concave et strictement décroissante sur $[rho - eps, rho-eps/2]$
 + $h eq.triple 0$ sur $[rho-eps/2, +oo]$
-avec $a > c_"gf"(V) $ et $c>0$ distinct de la longueur de toute géodésique close et $eps>0$ petit. #todraw[hamiltonien]
+avec $a > c_"gf"(V) $ et $c>0$ distinct de la longueur de toute géodésique close et $eps>0$ petit. #todraw[dessin de l'hamiltonien]
 
 On considère alors l'hamiltonien à support compact $H : TLL -> RR$ défini par $H(q,p) := h(norm(p)) $ et on note $(phi_t)_(t in [0,1])$ l'isotopie hamiltonienne correspondante.
 
-#proposition[Le flot $phi$ est une reparamétrisation du flot cogéodésique (défini en #tolink[cogéodésique]) $g$ #tolink[cogéod] et si $z = (p,q)$ est un point fixe de $phi_1$ alors la projection $gg$ de sa $phi$-orbite sur $L$ est une géodésique fermée de longueur $ell(gg) = h'(norm(p))$.]<propPhiCogeod>
+#proposition[Le flot $phi$ est une reparamétrisation du flot cogéodésique (voir @defCogeod) $g$ et si $z = (p,q)$ est un point fixe de $phi_1$ alors la projection $gg$ de sa $phi$-orbite sur $L$ est une géodésique fermée de longueur $ell(gg) = h'(norm(p))$.]<propPhiCogeod>
 
 #proof[
-D'après, #tolink[hamiltonien cogéodésique] le flot cogéodésique est généré par l'hamiltonien $K : (q,p) !> norm(p)^2 /2$, qui est lié à $H$ par la relation $H = a (K)$ où $a : s !> h(sqrt(2s))$. Ainsi, en posant $c : z = (q,p) mapsto a'(K(z)) (h'(norm(p)))/norm(p)$, on obtient que $X_H (z) = c(z) X_K (z)$.
+D'après, la @propCogeodHam le flot cogéodésique est généré par l'hamiltonien $K : (q,p) !> norm(p)^2 /2$, qui est lié à $H$ par la relation $H = a (K)$ où $a : s !> h(sqrt(2s))$. Ainsi, en posant $c : z = (q,p) mapsto a'(K(z)) (h'(norm(p)))/norm(p)$, on obtient que $X_H (z) = c(z) X_K (z)$.
+
 Par conséquent, pour tout $z in TLL$,
 $ dv(g_(c(z)t) (z),t) = c(z) K(g_(c(z)t)(z)) = H( g_(c(z)t) (z)) $
 et donc $phi_t (z) = g_(c(z)t) (z)$pour tout $t in [0,1]$. Ce qui prouve la première assertion.
 
   Si $z$ est un point fixe de $Phi_1$, le fait que $gg := (pi_L (phi_t (z)))_(t in [0,1])$ soit une géodésique fermée découle immédiatement du résultat précédent et enfin, une géodésique étant de vitesse constante :
-  $ ell(gg) = int_0 ^1 norm(dot(gg)_t) dd(t) = int_0^1 norm( dv(g_(c(z)t)(z),t)) = int_0^1 c(z) norm(p) dd(t) = c(z) norm(p) = h'(norm(p))  $.
-
-  #todo[consistency of notaion $pi_L$]
+  $ ell(gg) = int_0 ^1 norm(dot(gg)_t) dd(t) = int_0^1 norm( dv(g_(c(z)t)(z),t)) = int_0^1 c(z) norm(p) dd(t) = c(z) norm(p) = h'(norm(p)). $
 ]
 Fixons $z =(p,q)$ un point fixe de $phi_1$.
 On considèrera alors le fibré symplectique $E to SS_1$ dont la fibre $E_t$ au point $t in SS_1$ est donnée par
@@ -403,30 +402,20 @@ Déduisons-en la preuve dans le cas concave.
 == Faits sur le flot cogéodésique
 
 
-Ce dernier est en effet le flot hamiltonien associé à $K : (q,p) !> norm(p)^2/2$. Puis en posant  on a $phi_t=g_(c.t)$. Ainsi à tout point fixe $(q,p)$ de $phi_1$ correspond une géodésique fermée $gamma$ de $TL$ de longueur $ell(gamma)=h'(norm(p))$.
-#tosource[finish this part]
 
-#propdef("Flot cogéodésique")[Soit $hat(z) in TL$. Il existe une unique géodésique $gg$ sur $L$ tqe $(gg_0, dot(gg)_0) = hat(z)$. On appelle alors _flot géodésique_ l'application 
+#propdef("Flot cogéodésique")[Soit $hat(z) in TL$. Il existe une unique géodésique $gg$ sur $L$ tqe $(gg_0, dot(gg)_0) = hat(z)$. On appelle alors *flot géodésique*#footnote[Lequel est bien défini car _L_ est compact donc complet.] l'application 
 $ hat(g) : &TL times [0,1] &to &TL \
-           &(z,t) & !> & (gg_t,dot(gg)_t)$
-et _flot cogéodésique_, noté $g : TLL times [0,1] to TLL$ son conjugué par l'isomorphisme $TLL sim.eq TL$.]
-#tosource[vérifier hypothèses]
+           &(z,t) & !> & (gg_t,dot(gg)_t)  $
+et *flot cogéodésique*, noté $g : TLL times [0,1] to TLL$ son conjugué par l'isomorphisme $TLL sim.eq TL$.]<defCogeod>
 
-#proposition[Le flot cogéodésique est engendré par l'hamiltonien 
-$K :& TLL &-> &RR\
-  &z=(q,p) &mapsto & norm(p)/2$.]
-
-#proof[
-
-]
 Le fibré $TTL$, muni la connexion de Levi-Civita associée à la métrique $norm(dot)$ admet une décomposition 
-$ TTL = hor plus.o vert $
+#numbered_eq[$ TTL = hor plus.o vert $]<eqDecompHorVert>
 en sous-fibrés horizontal et vertical. Ces derniers sont alors canoniquement isomorphes à $TLL$ et sont donc munis d'un produit scalaire canonique.
 
 #proposition[Soit $(q,U)$ système de coordonnées normales sur $L$ en $pi_L (z)$ sont on déduit les coordonnés symplectiques $((q,p), U times RR^(2n)$ sur $T^*L$. Alors $(q, partial q, p, partial p)$ est un système de coordonnées sur $TTL$ sur lequel 
 $ TTL = hor plus.o vert = ker dd(p) plus.o ker dd(q).$]
 
-#proof[Dans le système de coordonnées ci-dessus, $pi_L : (q,p) !> q$ donc $dd(pi)=dd(q)$ et par suite $vert :=ker dd(pi) = ker dd(q)$.
+#proof[Dans le système de coordonnées ci-dessus, $pi_L : (q,p) !> q$ donc $dd(pi_L)=dd(q)$ et par suite $vert :=ker dd(pi_L) = ker dd(q)$.
 
 Ensuite, $ hor(z) = Im dd(s)_(pi_L (z))$ où $s$ est une section du fibré $TLL to L$telle que $s( pi_L (z))=z$ et $nabla_X s =0$ pour tout $X in T_(pi_L (z)) L$, $nabla$ étant la connexion de Levi-Civita associée à $norm(dot)$. Or remarquons que si l'on note $(q_0,p_0)$ les coordonnés en $z$, $s : (p,q) !> p_0 dd(q) $ convient. En effet, $sigma(pi_L (z))= z$ et tout $X in T_(pi_L (z)) L$ s'écrit $X = sum_(i=1)^n X_(i) dd(q_i)$ donc $nabla_X s = sum_(i=1)^n sum_(j=1)^n p^j_0 X_j nabla_(dd(q_i))dd(q_j)$. Or $nabla_(dd(q_i))dd(q_j)$ est l'image par l'isomorphisme $TLL sim.eq TL$ de $nabla_(partial q_i) partial q_j = 0$ par le choix des coordonnées normales. 
 Ainsi, $hor (z) = im dd(s)_(pi_L (z))$ et lu dans les coordonnées $dd(s)_(q_0,p_0) = (q_0, dd(q)_(z), p_0,0)$. Ainsi, $hor(z) = ker dd(q)$.
@@ -441,9 +430,12 @@ Ainsi, $hor (z) = im dd(s)_(pi_L (z))$ et lu dans les coordonnées $dd(s)_(q_0,p
 //Puis par le calcul c'est égal à ce que l'on souhaite car on est en coordonnées normales. 
 ]
 
-#proposition[$X_K (z)=(p,0)$ dans $hor plus.o vert sim.eq TL plus.o TL$.]
+#proposition[Le flot cogéodésique est engendré par l'hamiltonien 
+$ K : & TLL &-> &RR\
+  &z=(q,p) &mapsto & norm(p)/2. $
+qui a pour gradient symplectique le champ de vecteurs qui en $z = (p,q)$ vaut $X_K (z)=(p,0) in hor plus.o vert sim.eq TLL plus.o TLL$.]<propCogeodHam>
 
-#proof[On se place dans $q$ coordonnées normales. On a que $K(z)=sum p_i^2 /2 $ donc $dd(K) (z) = sum p_i dd(p_(i)) = chevron.l p, dd(p) chevron.r = omega_L ( (p,0), dot )$ en identifiant $p$ à son image dans $hor(z)$. Ainsi, on a bien $X_k = (p,0)$.]
+#proof[On se place dans $q$ coordonnées normales. On a que $K(z)=sum p_i^2 /2 $ donc $dd(K) (z) = sum p_i dd(p_(i)) = chevron.l p, dd(p) chevron.r = omega_L ( (p,0), dot )$ en identifiant $p$ à son image dans $hor(z)$. Ainsi, on a bien $X_K (z) = (p,0)$.] 
 
 Ainsi on en déduit que si $gg$ est une géodésique alors $dd(dot(c)(t))/dd(t)= (dot(c)(t), 0) = X_K (dot(c(t))). $ Ainsi, $c(t)=g_t (c(0))$.
 
@@ -452,57 +444,74 @@ Ainsi on en déduit que si $gg$ est une géodésique alors $dd(dot(c)(t))/dd(t)=
 #proof[Soient $eta_0 in T_z TLL$. Alors $eta_t := dd(g_t)(eta_0)$ est un champ de vecteur $g$-invariant.
 
 Soit $k$ courbe sur $TLL$ tqe $pdv(k,s)_(| s=0) = eta_(0)$. Posons $eta_t := pdv(g_t k_s,s)_(|s=0)$. Puis remarquons que par la proposition précédente :
-$ pdv(,t) pi_L g_t (k_s)=T pi_L.(pdv(,t) g_t (k_s))=T pi_L.(g_t (k_s),0)=g_t (k_s).$
+$ pdv(,t) pi_L g_t (k_s)=T pi_L.(pdv(,t) g_t (k_s))=T pi_L.(g_t (k_s),0)=g_t (k_s). $
 
-Puis pour tout $s$, $t !> pi_L g_t (k_s)$ est une géodésique. Ainsi la partie horizontale de $eta_t$ : 
+Donc pour tout $s$, $t !> pi_L g_t (k_s)$ est une géodésique. Ainsi la partie horizontale de $eta_t$ : 
+
 $ pi_h (eta_(t) ) = T pi_L pdv(g_t (k_s),s)_(|s=0) = pdv(,s) pi_L g_t (k_s)_(|s=0) $ est un champ de Jacobi.
 
-Puis :
+Puis, en utilisant que $nabla/dd(t) g_t (k_s)_(|s=0) = K. pdv(,s) g_t (k_s) _(|s=0) $ et $nabla/dd(s) pdv(,t) = nabla/dd(t) pdv(,s) $ on obtient :
 $ eta_t &= pdv(,s) g_t (k_s)_0 \ 
         &= (T pi_L pdv(,s) g_t (k_s)_0, pi_h pdv(,s) g_t (k_s)_0 )\ 
+        &= (T pi_L pdv(,s) g_t (k_s)_0, nabla/dd(s) g_t (k_s)_0 )\ 
         &= (eta_(t,h), nabla/dd(s) pdv(,t) pi_L g_t (k_s)_0)\ 
         &= (eta_(t,h), nabla/(dd(t)) eta_(t,v)). $]
 
 #let fibrator = $E$
 
-#proposition[Puisque $z=(q,p)$ et $"T"_q L sim.eq "T"_q^*L = RR p plus.o p^perp$, on obtient par #tolink[identification tangents hor vert] deux décomposition $hor = hor' plus.o hor''$ et $vert = vert' plus.o vert''$. On pose alors $fibrator':=hor' plus.o vert'$, et $fibrator'':= hor'' plus.o vert''$, sous-fibrés symplectiques orthogonaux et de dimension respectives $2$ et $2n-2$. De plus, le flot cogéodésique préserve cette décomposition.
-]
+#rappel[Si $eta$ est un champ de Jacobi le long d'une géodésique $gg$ tel que $eta_0 = aa dot(gg)_0$ et $nabla eta_0 = bb dot(gg)_0$ pour deux réels $aa,bb$, alors $eta_t = (aa+bb t) dot(gg)_t$.]<rappelJacobs>
+
+#proof[#tosource[Parellèlisme des Jacobs]]
+
+
+Puisque $z=(q,p)$ et $"T"_q L sim.eq "T"_q^*L = RR p plus.o p^perp$, on obtient par @eqDecompHorVert deux décompositions $hor = hor' plus.o hor''$ et $vert = vert' plus.o vert''$. On pose alors $fibrator':=hor' plus.o vert'$, et $fibrator'':= hor'' plus.o vert''$, sous-fibrés symplectiques orthogonaux et de dimension respectives $2$ et $2n-2$.
+
+#proposition[Le flot cogéodésique préserve cette décomposition. De plus, le sous-fibré $fibrator'$ est trivial et pour $t in RR$, l'isomorphisme de fibré induit $T (g_t) : fibrator' to fibrator'$ s'écrit dans les bases naturelles :
+$ mat(1,t;0,1). $
+]<propSplitStable>
 
 #proof[
-  L'espace $hor'(z)$ est $phi_t$ invariant, en effet dans la décomposition $TTLL(z) = "T"^*_z L plus.o "T"^*_z L$ prise en $z=(p,q)$:
-  $ T_z phi_t (p,0) &= T_z phi_t X_K (z)\
-                    &= pdv(,s)phi_t circ phi_s (z)_(|s=0)\
-                    &= X_K (phi_t (z)) in hor'( phi_t (z)). $
+  Tout d'abord, par la @propDescriptionOmega $omega((p,0),(0,p)) !=0$ et $fibrator'$ est l'orthogonal symplectique de $fibrator''$. Or par la @propCogeodHam il suffit donc de montrer que $fibrator'$ est invariant. 
+  D'abord, dans la décomposition $TTLL(z) = "T"^*_z L plus.o "T"^*_z L$ prise en $z=(p,q)$, par la @propCogeodHam
+  $ T_z phi_t (p,0) &= T_z g_t X_K (z)\
+                    &= pdv(,s)g_t circ g_s (z)_(|s=0)\
+                    &= X_K (g_t (z)) in hor'( phi_t (z)). $
+  Puis, d'après, la @bijginvJacobs, $t !> T_z g_t (0,p)$ est un champ de vecteurs $g$-invariant le long de $t!> g_t (z)$. Il s'écrit donc $T_z g (0,p) = (eta, nabla eta)$ où $eta$ est un champ de Jacobi le long de $t!> g_t(z)$. Or $eta_0 = 0$ et $nabla eta = p$. Ainsi, par le @rappelJacobs, $eta_t = t g_t (z) $ et donc $T_z g.(0,p) = (t g_t (z), g_t (z)) in fibrator'$. #todo[rewrite the proof to make it more coherent. ]
 
-  Puis, par la @propDescriptionOmega $omega((p,0),(0,p)) !=0$ et $fibrator'$ est l'orthogonal symplectique de $fibrator''$.
-  #todo[finish Riemm géom]
-
+Enfin, la trivialisation est donnée par les identifications $hor'(z) sim.eq RR p$ et $vert'(z) sim.eq RR p$ en $z=(q,p)$ qui permettent d'obtenir $fibrator' sim.eq L times RR^2$ et les calculs ci-dessus donnent la forme de $T_z phi_t $ dans les bases naturelles.
 ]
-#proposition[Ok par passage en coordonnées locales.]
-
-#toprove[relire Massot et conclure]
-
-#proposition[Le sous-fibré $fibrator'$ est trivial et pour $t in RR$, l'isomorphisme de fibré induit $dd(g_t) : fibrator' to fibrator'$ s'écrit dans la base canonique :
-$ mat(1,t;0,1). $
-]
-
-#proof[La trivialisation est donnée par les identifications $hor'(z) sim.eq RR p$ et $vert'(z) sim.eq RR p$ en $z=(q,p)$ qui permettent d'obtenir $fibrator' sim.eq L times RR^2$.
-
-
-Posons $Z : t !> dd(g_t) (z) p$ champs de vecteur $g-$invariant le long de $gg$. Alors, par la @bijginvJacobs, on dispose $Y$ champs de Jacobi le long de $gg$ tq $Z = (Y, nabla Y)$. Alors $Y_0 = $
-#toprove[La forme de dgt]
-
-]
-
-
 == Fin de la preuve
 
-#proof[En différentiant #tolink[formule reparamétrisation] en $z$ on obtient :
-$ dd(phi_t) (z) = dd(g_(c(z)t)) (z) + [t dd(c) (z)] X_K( phi_t (z)). $
+#proof[En différentiant la formule obtenue dans la preuve de la @propPhiCogeod en $z$ on obtient :
+#numbered_eq[$T_z phi_t = T_z g_(c(z)t)  + [t T_z c ] X_K ( phi_t (z)).$]<eqDiffPhi>
 
-Remarquons que si $v in fibrator''_z$ alors $dd(c) (z) v = 0 $. En effet, soit $aa :  $a
+Remarquons que si $v in fibrator''_z$ alors $T_z c.v= 0 $. Ainsi sur $fibrator''$, $T_z (phi_t) = T_z g_t$ ne dépend pas de la concavité ou convexité de $h$ en $z$.
 
+  La décomposition $TTL = fibrator' plus.o fibrator''$ nous permet de séparer $E$ $E = E' plus.o E''$, somme symplectique et nous donne $V=V'plus.o V''$ et $Gamma = Gamma' plus.o Gamma''$ décomposition en sous-fibrés Lagrangiens de $E'$ et $E''$. Ainsi, par additivité #tolink[additivité du Maslov nouveau], $ind_phi (gg)=ind_V (Gamma) = ind_V' (Gamma') + ind_V''(Gamma'')$. Par ce qui précède, seul $ind_V' (Gamma')$ dépend du caractère connexe ou convexe de $h$ en $z$. On s'attèlera donc à le calculer.
+
+
+  Si $v=(aa, bb) in fibrator_z' = hor'(z) plus.o vert'(z) sim.eq RR^2$ alors par la @propSplitStable et l'équation @eqDiffPhi, la matrice  $ T_z phi_t v$ dans les bases naturelles est : 
+  $ mat(1, c(z)t; 0,1) + t (0, h''(norm(p))- c(z)) vec( 1,0) 
+  &= mat(1, h''(norm(p))t ; 0,1). $
+
+  La @propSplitStable nous offre les trivialisations de $E' sim.eq overline(RR^2) times RR^2$, dans laquelle $V' sim.eq (0times RR) times (0times RR)$ et $Gamma_t = "graph" (A_t)$ où $A_t$ est l'endomorphisme canoniquement associé à la matrice ci-dessus. Posons $aa := (0 times RR) times(0 times RR) in Lambda(2)$ cet espace est transverse à $Gamma_t$ à tout temps $t in [0,1]$ donc par la @defMD $ind(L) = ind Q(Gamma_1,aa ; Gamma_0)$. Or $Q(Gamma_1, aa; Gamma_0) = - Q(Gamma_0, aa; Gamma_1) $ donc $ind(L) = "coind" Q(Gamma_0,aa:Gamma_1)$.
+  Soit $C : Gamma_0 to aa$ le cadre lagrangien associé à $Gamma_1$. L'espace $Gamma_0$ étant la diagonale, on en déduit par un simple calcul que
+  $C : (u_1,u_2; u_1,u_2) in Gamma_0 !> (-h''(norm(p)) u_2,0;0,0) in aa. $
+  Ainsi, pour tout $u = (u_1,u_2;u_1,u_2) in overline(RR^2)times RR^2$ 
+  $ Q(Gamma_0,aa;Gamma_1) u &= (-omega_(RR^2) plus.o omega_(R^2)) (C(u),u)\
+                            &= - omega_(RR^2) ( (-h''(norm(p))u_2, 0), (u_1,u_2)) + 0 \
+                            &= h''(r) u_2^2. $
+
+Par suite, par la @defMDfibré, $
+  ind_V' (Gamma') &= ind Gamma' - ind V'\ 
+                  &= "coind" Q(Gamma_0,aa; Gamma_1)\
+                  &= cases(
+                             1 & " si " h''(norm(p))>0,
+                              0 & " si " h''(norm(p))<0
+                          ) $
+Ainsi, $ind_phi^"concave" z = ind_phi^"convexe" z -1$. Ce qui conclut la preuve @propMorseMaslov.
 ]
+
 
 = La vraie vie c'est dans $RR^(2n)$
 
@@ -574,7 +583,7 @@ On obtient finalement:
 #proof[On a $c(H)=c(HH)=cal(A)_HH (z)= int_(t!>Phi_t (z)) ll_(RR^(2n))-HH dd(t)$. Mais $HH$ est constant le long de l'orbite de $Phi$ et égal à $HH(z)=h(norm(p))$ donc $c(H) = int_(t!> Phi_t (z)) ll_(RR^(2n)) -h(norm(p)) $.
 
     Puis $H$ étant radial, on a nécessairement $norm(Phi_t (z)) = norm(p)$ pour tout $t in [0,1]$. Notons $C$ le cylindre reliant $gamma$ (vu dans la section nulle de $TLL$) à l'image de $t!> phi_t (z)$. On obtient d'une part, par la formule de Stokes et la nullité de $ll_L$ sur la section nulle $ int_C omega_"can" = int_C dd(ll_L) = int_(t!>phi_t (z)) ll_L - int_gamma ll_L = int_(t!> phi_t (z)) ll_L. $
-    Puis $J$ étant un symplectomorphisme, on en déduit $ int_C omega_"can" = int_(J_* C) J^* dd(ll_(RR^(2n))) = int_(t!>Phi_t (z)) ll_(RR^(2n) )-int_(gamma) j^*ll_(RR^(2n)). $
+    Puis $J$ étant un symplectomorphisme, $int_C omega_"can" = int_(J_* C) J^* dd(ll_(RR^(2n))) = int_(t!>Phi_t (z)) ll_(RR^(2n) )-int_(gamma) j^*ll_(RR^(2n)). $
 
     #todraw[Cylindre]
     Or $int_(t!>Phi_t (z)) ll_L = int_0^1 norm(p) dot(q)_t =  norm(p) ell(gg) = norm(p) h'(norm(p))$.
@@ -608,9 +617,8 @@ $ K(rho,c) = cases(
 
 Quitte à extraire, on peut supposer $forall m in NN, r_m in ]eps_m/2,eps_m[$ (cas convexe) ou $forall m in NN, r_m in ]rho- eps_m, rho_eps_m/2[$.
 
-//Dans les deux cas, on a $gg_m = h'(r_m) <= c$ #tolink[majoration de la longueur]. Ainsi par #inline-note(stroke:"yellow")[compacité de l'ensemble des géodésiques de longueur bornée par $c$] on peut supposer que la suite $(gg_m)_(m in NN)$ converge vers une géodésique fermée $gg$ (qui vérifie donc @eqencadrementmujgg).
+Dans les deux cas, on a $gg_m = h'(r_m) <= c$ #tolink[majoration de la longueur]. Ainsi par #tosource[compacité de l'ensemble des géodésiques de longueur bornée par $c$] on peut supposer que la suite $(gg_m)_(m in NN)$ converge vers une géodésique fermée $gg$ (qui vérifie donc @eqencadrementmujgg).
  
-#todo[uncomment]
 Dans le cas convexe, $r_m ->0$, $sup_(m in NN) h'(r_m) <=c <oo$ et $h_(eps_m) (eps_m) = h_(rho-eps) - c(rho _ 2 eps_m) to - c rho$ et dans le cas concave, on a $r_m to rho$, $h'(r_m) = ell(gg_m) to ell(gg)$.et $h_(eps_m)(r_m) to 0$. L'égalité demandée découle du passage à la limite dans @eqrm.
 ]
 
@@ -689,7 +697,7 @@ Mais par compacité de l'ensemble des géodésiques de longueur majorée par $c$
 
 $ K(j):=lim_(rho to 0) lim_(c to oo) K(rho,c) >= (n-1) norm(U)_mu. $
 
-On peut alors prouver le théorème. Par la formule ci-dessus, on a pour tout $delta>0$, deux nombres réels $rho>0$ et $c>0$ tqs $J(B_rho) cc V$ et $K_0(rho,c)>(n-1) norm(U)_mu - delta$. On a donc, par définition de $K_0(rho,c)$, un hamiltonien $HH$ à support compact et inclus dans $V$ de capité $c(HH)>=(n-1)norm(U)-2delta$. D'où finalement :
+On peut alors prouver le théorème. Par la formule ci-dessus, on a pour tout $delta>0$, deux nombres réels $rho>0$ et $c>0$ tqs $J(B_rho) cc V$ et $K_0(rho,c)>(n-1) norm(U)_mu - delta$. On a donc, par définition de $K_0(rho,c)$, un hamiltonien $HH$ à support compact et inclus dans $V$ de capacité $c(HH)>=(n-1)norm(U)-2delta$. D'où finalement :
 $ c_"gf" (V)>= (n-1)norm(U)_(mu). $
 
 On obtient alors le résultat souhaité par passage à la borne supérieure :
