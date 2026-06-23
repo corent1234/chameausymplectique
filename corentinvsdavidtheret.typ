@@ -254,7 +254,7 @@ On considère alors la forme quadratique$ Q(L_1, aa; L_0) : & L_1 &to & RR \ & u
   + On a par additivité de l'indice de Maslov $[L*M:aa] = ind(L*M*L') = ind(L'*L*M)=ind(L*L') + ind(M)$. Puis du fait que $ind Q(L_1,aa;L_0)$ ne dépende que des extrémités du chemin considéré et par 1., on trouve $ind(L*M) = ind(L)+ind(M)$.
 ]
 
-#remark[Le troisième point de la proposition précédente ne marche pas si $M$ n'est pas un lacet. #todo[contrexemple de l'additivité de la concaténation des chemins]]
+#remark[En général, l'indice de Maslov-Duistermaat n'est pas additif pour la concaténation de chemins. Par exemple en posant $L : t in [0,1] !> "e"^(i pi/2 t) (0 times RR)$ et $L' : t in [0,1] !> "e"^(i pi/2 (t+1)) ( 0 times RR)$ on trouve $ind(L*L') = 1 != ind(L)+ind(L')=2$. ]
 
 #proposition[ Soient $A : SS_1 to "Sym"(FF)$ et $L,L' : [0,1] to Lambda(n)$. Alors en notant $A L:= (A_t L_t)$ on a l'égalité suivante :
 $ ind(A L)- ind(A L') = ind(L)-ind(L'). $]<propegalacet>
@@ -294,7 +294,10 @@ définit un plongement linéaire Lagrangien. On dit que $L = im(i_Q)$ est engend
 
 #proof[ #toprove[définition de l'indice gf] ]
 
-#proposition[ Si $L$ est un lacet de Lagrangiens de $RR^(2m)$ alors $ind_gf (L) =ind(L)$.]<propcoinclacet>
+#proposition[L'indice gf vérifie les propriétés suivantes :
+  + Si $L$ est un lacet de Lagrangiens de $RR^(2m)$ alors $ind_gf (L) =ind(L)$.
+  + Si $L_1,L_2$ sont de chemins de Lagrangiens de $RR^(2m_1)$ et $RR^(2m_2)$ respectivement alors $ind_gf (L_1 plus.o L_2) = ind_gf L_1 + ind_gf L_2$.
+]<propcoinclacet>
 
 #proof[#toprove[ind gf et Maslov coïncident sur les lacets]]
 
@@ -321,15 +324,17 @@ D'où, finalement, $ind_gf (A) = ind dc(S_0)(w,z) - ind Q_oo$.
 Remarquons tout d'abord que puisque :
 + l'on dispose d'une décomposition $RR^(2n) = F plus.o F'$, en sous-espaces symplectiques, stables par $A_1$ tqe le spectre de $A_(1|F)$ ne contienne pas $-1$ et que celui de $A_(1|F')$ soit réduit à $-1$,
 + le groupe des symplectomorphismes d'un espace vectoriel est connexe,
-+ les deux indices considérés sont additifs vis-à-vis de la somme directe #toprove[Les indices sont additifs vis-à-vis de la somme directe]
++ les deux indices considérés sont additifs vis-à-vis de la somme directe. //#toprove[Les indices sont additifs vis-à-vis de la somme directe]
 on peut supposer que le spectre de $A_1$ ne contienne pas $-1$ ou soit réduit à $-1$.
 
-Dans le premier cas, cela signifie que $aa:=0 times  RR^(2n) $ est transverse à $L_1$ et $aa trans L_0 = RR^(2n) times 0$ par hypothèse. Soit alors $L' [0,1] to Lambda^0(aa)$ reliant $L_1$ à $L_0$. Alors, par définition $[L:aa]=ind(L*L')$. Or par la @propcoinclacet, $ind_gf (L*L')=ind(L*L')$. Puis par additivité de $ind_gf$ #todo[modifier la propriété @propcoinclacet], on obtient $[L:aa] = ind_gf (L) + ind_gf (L')$.
+Dans le premier cas, cela signifie que $aa:=0 times  RR^(2n) $ est transverse à $L_1$. Mais $aa trans L_0 = RR^(2n) times 0$ par hypothèse. Soit alors $L': [0,1] to Lambda^0(aa)$ reliant $L_1$ à $L_0$. Alors, par définition $[L:aa]=ind(L*L')$. Or par la @propcoinclacet, $ind_gf (L*L')=ind(L*L')$. Puis par additivité de $ind_gf$, on obtient $[L:aa] = ind_gf (L) + ind_gf (L')$.
 
-Ensuite puisque $L'_t  trans RR^(2n) times 0 $ pour tout $t in [0,1]$. Soit $C_t : L'_1 to aa $ le cadre lagrangien associé à $aa,L'_1$ et $L_t$. Alors $Q'_t : w !> 1/2 chevron.l C'_t w,w chevron.r$ est une forme quadratique génératrice pour $L'_t$ #todo[vérifier que la déf est bonne]. On a en particulier $C'_1=0$ et donc $Q'_1=0$. Ainsi $ind_gf (L')=ind_gf (Q'_1)-ind_gf (Q'_0) = -ind_gf Q'_0$.
+Ensuite puisque $L'_t  trans RR^(2n) times 0 $ pour tout $t in [0,1]$. Soit $C'_t : L'_1 to aa $ le cadre lagrangien associé à $aa,L'_1$ et $L_t$. On peut naturellement lui associer $hat(C')_t : RR^(2n) to RR^(2n)$. 
 
-Puis considérons $C : L_1 to aa$ tq $L_0={u +C u ; u in L_1}$. Si $u in L_1 = L'_0$ alors $u = v + C'_1 v$ pour un certain $v in L_0$. Ainsi, par unicité de la décomposition $L_0 plus.o alpha$, nécessairement, $C u= - C'_1 v$. #todo[move that so next line is more natural]
-Par suite, $Q(L_1,aa;L_0)(u)=omega_(RR^(2n))(C u,u)=-omega(C'_1 v, v) = Q'_0(v)$.
+Alors $Q'_t : w !> - 1/2 Q(L_1',aa;L_0')(y,0) = 1/2 chevron.l hat(C)'_t w,w chevron.r $ est une forme quadratique génératrice pour $L'_t$. On a en particulier $C'_1=0$ et donc $Q'_1=0$. Ainsi $ind_gf (L')=ind_gf (Q'_1)-ind_gf (Q'_0) = -ind_gf Q'_0$. 
+
+Puis considérons $C : L_1 to aa$ cadre lagrangien associé à $L_0$.//Si $u in L_1 = L'_0$ alors $u = v + C'_1 v$ pour un certain $v in L_0$. Ainsi, par unicité de la décomposition $L_0 plus.o alpha$, nécessairement, $C u= - C'_1 v$. #todo[move that so next line is more natural]
+Par suite, $Q(L_1,aa;L_0) =- Q(L_0,aa;L_1) = - Q(L_1',aa;L_0) sim.eq Q'_0$. #tolink[antisym de Q]
 
 Ainsi, $ind Q'_0=ind Q(L_1, aa;L_0)$ et donc
 $ 
@@ -339,9 +344,16 @@ ind (L) &=[L:aa]+ind Q(L_1,aa;L_0)\
         &= ind_gf (L).
 $
 
-Supposons maintenant que le spectre $A_1$ soit réduit à $-1$. On pose $aa = I("graph" B) = {(a/2,b/2,b,a) ; a,b in RR^(n)}$ où $B = mat(0,I;-I,0)$. Alors $aa$ est transverse à $L_0$ et $L_1$ et 
+Supposons maintenant que le spectre de $A_1$ soit réduit à $-1$. On pose $aa := I("graph" B) = {(a/2,b/2,b,a) ; a,b in RR^(n)}$ où $B = mat(0,I;-I,0)$. Alors $aa$ est transverse à $L_0$ et $L_1$ et 
 
-l'on peut joindre $A_1$ à $-Id$ par des symplectomorphismes ayant $-1$ comme seule valeur  propre.
+l'on peut joindre $A_1$ à $-Id$ par des symplectomorphismes ayant $-1$ comme seule valeur  propre, par connexité de $"Sp"(4n) cc "SL"_(4n) (RR)$. #y
+
+Mais les deux indices restent inchangés si l'on concatène à $(A_t)$ un tel chemin $hat(L)$. En effet, $hat(L)$ sera transverse en tout temps à $aa$ et à $L_0$ d',où l'invariance de $ind( I ( "graph " A) * hat(L)) = ind("graph " A)$.  
+
+On peut donc supposer $A_1 = - Id$. 
+
+Or il suffit de vérifier l'égalité sur un seul chemin de $Id$ à $-Id$. Ainsi, on se ramène au cas où $R^(2n)=RR^2$ et $A_t$ est la rotation d'angle $pi t$.
+
 
 
 
@@ -365,7 +377,7 @@ avec $a > c_"gf"(V) $ et $c>0$ distinct de la longueur de toute géodésique clo
 
 On considère alors l'hamiltonien à support compact $H : TLL -> RR$ défini par $H(q,p) := h(norm(p)) $ et on note $(phi_t)_(t in [0,1])$ l'isotopie hamiltonienne correspondante.
 
-#proposition[Le flot $phi$ est une reparamétrisation du flot cogéodésique (voir @defCogeod) $g$ et si $z = (p,q)$ est un point fixe de $phi_1$ alors la projection $gg$ de sa $phi$-orbite sur $L$ est une géodésique fermée de longueur $ell(gg) = h'(norm(p))$.]<propPhiCogeod>
+#proposition[Le flot $phi$ est une reparamétrisation du flot cogéodésique (voir @defCogeod) $g$ et si $z = (q,p)$ est un point fixe de $phi_1$ alors la projection $gg$ de sa $phi$-orbite sur $L$ est une géodésique fermée de longueur $ell(gg) = h'(norm(p))$.]<propPhiCogeod>
 
 #proof[
 D'après, la @propCogeodHam le flot cogéodésique est généré par l'hamiltonien $K : (q,p) !> norm(p)^2 /2$, qui est lié à $H$ par la relation $H = a (K)$ où $a : s !> h(sqrt(2s))$. Ainsi, en posant $c : z = (q,p) mapsto a'(K(z)) (h'(norm(p)))/norm(p)$, on obtient que $X_H (z) = c(z) X_K (z)$.
@@ -377,7 +389,7 @@ et donc $phi_t (z) = g_(c(z)t) (z)$pour tout $t in [0,1]$. Ce qui prouve la prem
   Si $z$ est un point fixe de $Phi_1$, le fait que $gg := (pi_L (phi_t (z)))_(t in [0,1])$ soit une géodésique fermée découle immédiatement du résultat précédent et enfin, une géodésique étant de vitesse constante :
   $ ell(gg) = int_0 ^1 norm(dot(gg)_t) dd(t) = int_0^1 norm( dv(g_(c(z)t)(z),t)) = int_0^1 c(z) norm(p) dd(t) = c(z) norm(p) = h'(norm(p)). $
 ]
-Fixons $z =(p,q)$ un point fixe de $phi_1$.
+Fixons $z =(q,p)$ un point fixe de $phi_1$.
 On considèrera alors le fibré symplectique $E to SS_1$ dont la fibre $E_t$ au point $t in SS_1$ est donnée par
 
 $ E_t := tilde(TTLL(z)) times TTLL(phi_t (z)) $
@@ -405,7 +417,7 @@ Déduisons-en la preuve dans le cas concave.
 
 #propdef("Flot cogéodésique")[Soit $hat(z) in TL$. Il existe une unique géodésique $gg$ sur $L$ tqe $(gg_0, dot(gg)_0) = hat(z)$. On appelle alors *flot géodésique*#footnote[Lequel est bien défini car _L_ est compact donc complet.] l'application 
 $ hat(g) : &TL times [0,1] &to &TL \
-           &(z,t) & !> & (gg_t,dot(gg)_t)  $
+           &(hat(z),t) & !> & (gg_t,dot(gg)_t)  $
 et *flot cogéodésique*, noté $g : TLL times [0,1] to TLL$ son conjugué par l'isomorphisme $TLL sim.eq TL$.]<defCogeod>
 
 Le fibré $TTL$, muni la connexion de Levi-Civita associée à la métrique $norm(dot)$ admet une décomposition 
@@ -417,8 +429,8 @@ $ TTL = hor plus.o vert = ker dd(p) plus.o ker dd(q).$]
 
 #proof[Dans le système de coordonnées ci-dessus, $pi_L : (q,p) !> q$ donc $dd(pi_L)=dd(q)$ et par suite $vert :=ker dd(pi_L) = ker dd(q)$.
 
-Ensuite, $ hor(z) = Im dd(s)_(pi_L (z))$ où $s$ est une section du fibré $TLL to L$telle que $s( pi_L (z))=z$ et $nabla_X s =0$ pour tout $X in T_(pi_L (z)) L$, $nabla$ étant la connexion de Levi-Civita associée à $norm(dot)$. Or remarquons que si l'on note $(q_0,p_0)$ les coordonnés en $z$, $s : (p,q) !> p_0 dd(q) $ convient. En effet, $sigma(pi_L (z))= z$ et tout $X in T_(pi_L (z)) L$ s'écrit $X = sum_(i=1)^n X_(i) dd(q_i)$ donc $nabla_X s = sum_(i=1)^n sum_(j=1)^n p^j_0 X_j nabla_(dd(q_i))dd(q_j)$. Or $nabla_(dd(q_i))dd(q_j)$ est l'image par l'isomorphisme $TLL sim.eq TL$ de $nabla_(partial q_i) partial q_j = 0$ par le choix des coordonnées normales. 
-Ainsi, $hor (z) = im dd(s)_(pi_L (z))$ et lu dans les coordonnées $dd(s)_(q_0,p_0) = (q_0, dd(q)_(z), p_0,0)$. Ainsi, $hor(z) = ker dd(q)$.
+Ensuite, $ hor(z) = Im dd(s)_(pi_L (z))$ où $s$ est une section du fibré $TLL to L$ telle que $s( pi_L (z))=z$ et $nabla_X s =0$ pour tout $X in T_(pi_L (z)) L$, $nabla$ étant la connexion de Levi-Civita associée à $norm(dot)$. Or remarquons que si l'on note $(q_0,p_0)$ les coordonnés en $z$, $s : (q,p) !> p_0 dd(q) $ convient. En effet, $s(pi_L (z))= z$ et tout $X in T_(pi_L (z)) L$ s'écrit $X = sum_(i=1)^n X_(i) dd(q_i)$ donc $nabla_X s = sum_(i=1)^n sum_(j=1)^n p^j_0 X_j nabla_(dd(q_i))dd(q_j)$. Or $nabla_(dd(q_i))dd(q_j)$ est l'image par l'isomorphisme $TLL sim.eq TL$ de $nabla_(partial q_i) partial q_j = 0$ par le choix des coordonnées normales. 
+Ainsi, $hor (z) = im dd(s)_(pi_L (z))$ et lu dans les coordonnées $dd(s)_(q_0,p_0) = (q_0, dd(q)_(z), p_0,0)$. Ainsi, $hor(z) = ker dd(p)$.
 ]#todo[Clarifier les 40 identifications dans les coordonnées.]
 
 #proposition[Dans la décomposition $TTL = "Hor" plus.o "Vert"$, la forme symplectique $omega_L$ s'écrit  $ omega_L (z) (delta z, delta z') = chevron.l delta_h z, delta_v z' chevron.r - chevron.l delta_v z, delta_h z' chevron.r  $]<propDescriptionOmega>
@@ -433,7 +445,7 @@ Ainsi, $hor (z) = im dd(s)_(pi_L (z))$ et lu dans les coordonnées $dd(s)_(q_0,p
 #proposition[Le flot cogéodésique est engendré par l'hamiltonien 
 $ K : & TLL &-> &RR\
   &z=(q,p) &mapsto & norm(p)/2. $
-qui a pour gradient symplectique le champ de vecteurs qui en $z = (p,q)$ vaut $X_K (z)=(p,0) in hor plus.o vert sim.eq TLL plus.o TLL$.]<propCogeodHam>
+qui a pour gradient symplectique le champ de vecteurs qui en $z = (q,p)$ vaut $X_K (z)=(p,0) in hor plus.o vert sim.eq TLL plus.o TLL$.]<propCogeodHam>
 
 #proof[On se place dans $q$ coordonnées normales. On a que $K(z)=sum p_i^2 /2 $ donc $dd(K) (z) = sum p_i dd(p_(i)) = chevron.l p, dd(p) chevron.r = omega_L ( (p,0), dot )$ en identifiant $p$ à son image dans $hor(z)$. Ainsi, on a bien $X_K (z) = (p,0)$.] 
 
@@ -472,7 +484,7 @@ $ mat(1,t;0,1). $
 
 #proof[
   Tout d'abord, par la @propDescriptionOmega $omega((p,0),(0,p)) !=0$ et $fibrator'$ est l'orthogonal symplectique de $fibrator''$. Or par la @propCogeodHam il suffit donc de montrer que $fibrator'$ est invariant. 
-  D'abord, dans la décomposition $TTLL(z) = "T"^*_z L plus.o "T"^*_z L$ prise en $z=(p,q)$, par la @propCogeodHam
+  D'abord, dans la décomposition $TTLL(z) = "T"^*_z L plus.o "T"^*_z L$ prise en $z=(q,p)$, par la @propCogeodHam
   $ T_z phi_t (p,0) &= T_z g_t X_K (z)\
                     &= pdv(,s)g_t circ g_s (z)_(|s=0)\
                     &= X_K (g_t (z)) in hor'( phi_t (z)). $
@@ -520,7 +532,7 @@ $ cases(
     HH = H circ J^(-1)& "sur V", HH eq.triple 0 & "en dehors"
 ) $.
 
-#proposition[Si $a>c_"gf"(V)$ et $c>0$ est distinct de la longueur de toute géodésique fermée, alors il existe $z=(p,q)$ point fixe de $phi_1$ tq $h$ est strictement convexe ou concave en $norm(p)$.]
+#proposition[Si $a>c_"gf"(V)$ et $c>0$ est distinct de la longueur de toute géodésique fermée, alors il existe $z=(q,p)$ point fixe de $phi_1$ tq $h$ est strictement convexe ou concave en $norm(p)$.]
 
 
 #proof[On a que $c_-(HH) = 0$ car $HH<=0$ donc $c_+(HH)>0$ car $Phi_1$ n'est pas l'identité #y. Par suite on a $z$ pt fixe de $Phi_1$ tq $0< cal(A)_HH (z)=c_+(HH)<= c_"gf"(V)$ donc $z in V$ et $HH(z) != a$ car sur cet ensemble $cal(A)_HH = a >c_"gf"(HH)$. Posons $(q,p) :=J^(-1) (z)$ qui est un point fixe de $phi_1$ tq $norm(p) in ]eps/2, rho-eps/2[$ mais par ce qui précède, $h'(norm(p))$ est la longueur d'une géodésique fermée (celle associée à $z$) donc nécessairement $h$ convexe en $norm(p)$.]
