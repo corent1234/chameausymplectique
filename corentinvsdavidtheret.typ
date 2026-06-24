@@ -58,6 +58,7 @@
 #note-outline(title:"Todos")
 
 
+#let simto = overset[#math.arrow][#sim]
 
 = Corentin vs Victor Maslov et Johannes Jisse Duistermaat
 
@@ -301,14 +302,14 @@ définit un plongement linéaire Lagrangien. On dit que $L = im(i_Q)$ est engend
 
 #proof[#toprove[ind gf et Maslov coïncident sur les lacets]]
 
-#definition[Soit $A: [0,1] to "Sym"(RR^(2n))$ chemin continu de symplectomorphismes. Alors par l'identification #tolink[identification] on obtient $L := I("graph" A)$ chemin de Lagrangiens de $lk^* RR^(2n) sim.eq RR^(2m)$ avec $m=2n$. On définit alors *l'indice gf* de $A$ comme $ind_gf (A) := ind_gf (L)$.]
+#definition[Soit $A: [0,1] to "Sym"(RR^(2n))$ chemin continu de symplectomorphismes. Alors par l'identification #tolink[identification] on obtient $L := I(graph A)$ chemin de Lagrangiens de $lk^* RR^(2n) sim.eq RR^(2m)$ avec $m=2n$. On définit alors *l'indice gf* de $A$ comme $ind_gf (A) := ind_gf (L)$.]
 
 #proposition[Soit $Phi$ isotopie hamiltonienne de $RR^(2n)$ à support compact et $S$ une famille de fonction génératrice quadratique à l'infini associée. #tolink[fonctions génératrices] Soit $z in RR^(2n)$ un point fixe de $Phi_1$ et $(z,xi)$ le point critique de $S_1$ associé. Alors en posant $A = (dd(Phi_t)(z))_(t in [0,1])$ on a l'égalité :
 $ ind_gf (A) = ind dc(S_1) (z,xi) - ind Q_oo. $
 ]<propeqgfQinf>
 
 #proof[
-On considère $Psi$ l'isotopie hamiltonienne de $lk RR^(2n)$ donnée par $Psi_t = I Phi_t I^(-1)$. Par construction des fonctions génératrices, on dispose de $(w_t, xi_t)_(t in [0,1])$ chemin continu dans $RR^(2n)times RR^k$ tq $i_(Q_t) (w_t, xi_t) = Psi_t (z,0)$. On a alors que $Q_t := dc(S_t) (w_t, xi_t)$ est une fonction génératrice de $lk_Psi_t (z,0) tilde(Gamma)_t = I("graph" A_t)$. Ainsi par définition de $ind_gf (A)$ on a $ind_gf (A) = ind Q_1 - ind Q_0$.
+On considère $Psi$ l'isotopie hamiltonienne de $lk RR^(2n)$ donnée par $Psi_t = I Phi_t I^(-1)$. Par construction des fonctions génératrices, on dispose de $(w_t, xi_t)_(t in [0,1])$ chemin continu dans $RR^(2n)times RR^k$ tq $i_(Q_t) (w_t, xi_t) = Psi_t (z,0)$. On a alors que $Q_t := dc(S_t) (w_t, xi_t)$ est une fonction génératrice de $lk_Psi_t (z,0) tilde(Gamma)_t = I(graph A_t)$. Ainsi par définition de $ind_gf (A)$ on a $ind_gf (A) = ind Q_1 - ind Q_0$.
 
 Montrons maintenant que $ind Q_0 =ind Q_oo$. Or $Psi_0$ étant l'identité, par #tolink[théorème liant les noyaux de $dc(S)$ et $dd(Phi)-Id$], la dimension de $ker dc(S_0)$ est constante : $dim ker dc(S_0)(w,xi)=dim ker dd(Psi_0)(w)-Id =2n$ pour tout $(w,xi) in RR^(2n)times RR^k$. Par conséquent, l'indice de $dc(S_0)$ est lui aussi constant sur $Sigma_S_0 $ et $S_0$ étant égal à $Q_oo$ en dehors d'un compact, $ind dc(S_0) (w_0,xi_0)=ind Q_oo$.
 
@@ -317,7 +318,7 @@ D'où, finalement, $ind_gf (A) = ind dc(S_0)(w,z) - ind Q_oo$.
 //$d S_0$ est nulle sur $Sigma_S_0$ donc $dc(S_0_(|Sigma_S_0)) =0$ et par #todo[le lien] on a pour tout $(w,xi ) in Sigma_(S_0)$, $ker dc(S_0) (w,xi) = ker dc(S_0)(w,xi)_(|T_( (w,xi)) Sigma_S_0) = lk _( (w,xi)) Sigma_S_0$. Ainsi $(w,z) !> dim ker dc(S_0) (w,z)$ est constant sur $Sigma_S_0$ donc il en va de même pour $ind dc(S_0)$. Or par hypothèse $S_0=Q_oo$ en dehors d'un compact, d'où $ind dc(S_0) (w_0,xi_0) = ind Q_oo $ et l'égalité demandée.
 ]
 
-#theorem[Soit $A : [0,1] to "Sp"(RR^(2n))$ un chemin de symplectomorphismes. Si $A_0 = Id$ alors $ind_gf (A) = ind I("graph" A).$]
+#theorem[Soit $A : [0,1] to "Sp"(RR^(2n))$ un chemin de symplectomorphismes. Si $A_0 = Id$ alors $ind_gf (A) = ind I(graph A).$]
 
 
 #proof[
@@ -344,11 +345,11 @@ ind (L) &=[L:aa]+ind Q(L_1,aa;L_0)\
         &= ind_gf (L).
 $
 
-Supposons maintenant que le spectre de $A_1$ soit réduit à $-1$. On pose $aa := I("graph" B) = {(a/2,b/2,b,a) ; a,b in RR^(n)}$ où $B = mat(0,I;-I,0)$. Alors $aa$ est transverse à $L_0$ et $L_1$ et 
+Supposons maintenant que le spectre de $A_1$ soit réduit à $-1$. On pose $aa := I(graph B) = {(a/2,b/2,b,a) ; a,b in RR^(n)}$ où $B = mat(0,I;-I,0)$. Alors $aa$ est transverse à $L_0$ et $L_1$ et 
 
-l'on peut joindre $A_1$ à $-Id$ par des symplectomorphismes ayant $-1$ comme seule valeur  propre, par connexité de $"Sp"(4n) cc "SL"_(4n) (RR)$. #y
+l'on peut joindre $A_1$ à $-Id$ par des symplectomorphismes ayant $-1$ comme seule valeur  propre, par connexité de $"Sp"(4n) cc "SL"_(4n) (RR)$. #needhelp("valeurs propres")
 
-Mais les deux indices restent inchangés si l'on concatène à $(A_t)$ un tel chemin $hat(L)$. En effet, $hat(L)$ sera transverse en tout temps à $aa$ et à $L_0$ d',où l'invariance de $ind( I ( "graph " A) * hat(L)) = ind("graph " A)$.  
+Mais les deux indices restent inchangés si l'on concatène à $(A_t)$ un tel chemin $hat(A_t)$. En effet, $hat(A)$ sera transverse en tout temps à $aa$ et à $L_0$ d',où l'invariance de $ind( I ( graph A) * I ( graph hat(A)) ) = ind(graph A)$. Puis par la #tolink[lien noyau machin], on sait que si $Q'_t$ est une famille de formes quadratiques pour $I ( graph A) * I ( graph hat(A))$ alors $dim ker Q'_t = dim ker hat(A_t) - Id = 0$ le long de $ I ( graph hat(A))$. En particulier l'indice de $Q'_t$ y est constant.
 
 On peut donc supposer $A_1 = - Id$. 
 
@@ -361,8 +362,26 @@ Or il suffit de vérifier l'égalité sur un seul chemin de $Id$ à $-Id$. Ainsi
 
 
 
+
+
 ]<propindgfId>
 
+#proposition([Calcul de  $ind (I graph( e^(i pi t)))$)])[On se place dans $CC sim.eq RR^2$ et on suppose que $A_t : z in CC !> "e"^(i pi t) z$ pour tout $t in [0,1]$.
+#needhelp("Calcul")]
+
+#proof[On considère $B : z in CC !> -i z in "Sym" CC$ et $aa = I(graph B) = {(1-i)/2 z, (1+i)z ; z in CC}$ et onnote $L:= I(graph A)$. Par définition, $ind L = [L:aa] + Q(L_1, aa ;L_0)$. Or $aa trans L_t$ pour tout $t in [0,1]$ donc $[L:aa]=0$. Puis le cadre lagrangien associé à $L_1,aa$ et $L_0$ est $C: (0,u) !> (i/2 u, -u)$. Ainsi, pour tout $(0,u)in L_1 = 0 times CC$, 
+
+$Q(L_1,aa;L_0) &= omega_(T^* RR^(2)) (C u,u)\
+               &= (-omega_(RR^2) plus.o omega_(RR^2))( I^mm C u, I^mm u )\
+               &=  (-omega_(RR^2) plus.o omega_(RR^2))( (i+1)/2 u, (i-1)/2 u), (-u,u))\
+               &= 1/4 (- omega_(RR^2) ( (i+1)/2 u,- u ) + omega_(RR^2) ( (i-1)/2 u,u))\
+               &= 1/2 ( omega_(RR^2)(i u,u))\
+               &= 1/2 Im (overline(i u)u)\
+               &= - 1/2 norm(u).$
+Ainsi, $ind Q(L_1,aa;L_0) = -2$.
+]
+
+#needhelp[Calcul des formes quadragénérarices.]
 = Le système hamiltonien 
 
 Soit $L$ variété fermée de dims $n$ et $j : L arrow.hook RR^(2n)$. On munit $TLL$ de ses coordonnées locales cotangentes $(q,p) $, de $ww = dd(q) and dd(p)$ forme symplectique canonique. Fixons alors une métrique $norm(dot)$ sur $TL$ qui induit une métrique sur $TLL$ et un isomorphisme $TLL sim.eq TL$. On pose $B_rho := {(q,p) in TLL | norm(p) <= rho}$.
@@ -506,7 +525,7 @@ Remarquons que si $v in fibrator''_z$ alors $T_z c.v= 0 $. Ainsi sur $fibrator''
   $ mat(1, c(z)t; 0,1) + t (0, h''(norm(p))- c(z)) vec( 1,0) 
   &= mat(1, h''(norm(p))t ; 0,1). $
 
-  La @propSplitStable nous offre les trivialisations de $E' sim.eq overline(RR^2) times RR^2$, dans laquelle $V' sim.eq (0times RR) times (0times RR)$ et $Gamma_t = "graph" (A_t)$ où $A_t$ est l'endomorphisme canoniquement associé à la matrice ci-dessus. Posons $aa := (0 times RR) times(0 times RR) in Lambda(2)$ cet espace est transverse à $Gamma_t$ à tout temps $t in [0,1]$ donc par la @defMD $ind(L) = ind Q(Gamma_1,aa ; Gamma_0)$. Or $Q(Gamma_1, aa; Gamma_0) = - Q(Gamma_0, aa; Gamma_1) $ donc $ind(L) = "coind" Q(Gamma_0,aa:Gamma_1)$.
+  La @propSplitStable nous offre une trivialisation de $E' sim.eq overline(RR^2) times RR^2$, dans laquelle $V' sim.eq (0times RR) times (0times RR)$ et $Gamma_t = graph (A_t)$ où $A_t$ est l'endomorphisme canoniquement associé à la matrice ci-dessus. Posons $aa := (0 times RR) times(0 times RR) in Lambda(2)$ cet espace est transverse à $Gamma_t$ à tout temps $t in [0,1]$ donc par la @defMD $ind(L) = ind Q(Gamma_1,aa ; Gamma_0)$. Or $Q(Gamma_1, aa; Gamma_0) = - Q(Gamma_0, aa; Gamma_1) $ donc $ind(L) = "coind" Q(Gamma_0,aa:Gamma_1)$.
   Soit $C : Gamma_0 to aa$ le cadre lagrangien associé à $Gamma_1$. L'espace $Gamma_0$ étant la diagonale, on en déduit par un simple calcul que
   $C : (u_1,u_2; u_1,u_2) in Gamma_0 !> (-h''(norm(p)) u_2,0;0,0) in aa. $
   Ainsi, pour tout $u = (u_1,u_2;u_1,u_2) in overline(RR^2)times RR^2$ 
@@ -566,16 +585,15 @@ Sigma edge("u", e, -->) edge("ur", i, ->)
   //Puis, par les @propindgfId (puisque $dd(Psi_0)=Id$) et @propeqgfQinf, $ind_C (Gamma) = ind_gf (z)$. Or 
 $ 
 ind_C (Gamma) &= ind(tau(Gamma)) - ind(tau(V))+ ind (tau(V)) - ind(tau(C))\
-              &= ind_V (Gamma)- ind_C (V)\
-              &= ind_phi (z) - ind_C (V).$
+              &= ind_V (Gamma)+ ind_C (V)\
+              &= ind_phi (z) + ind_C (V).$
 
+Reste donc à calculer $ind_C (V) = ind( tau V) = ind (dd(J) (z).vert (z) plus.o dd(J) (phi_t (z)).vert (phi_t (z))) = ind( t!>  dd(J) (phi_t (z)).vert (phi_t (z)))$ par additivité de l'indice de Maslov-Duistermaat vis-à-vis de la somme directe. Posons $L : t!>  dd(J) (phi_t (z)).vert (phi_t (z)).$
+
+Or on dispose d'un application canonique $Psi : TTL -> TTL $ telle que pour tout $x in TL $, $Psi_(|TTLL(w)): TTLL(w) simto TTLL(pi_L x)$ est un symplectomorphisme et que, de plus, $Psi (vert(x)) = vert(pi_L x)$. #todraw[dessin de translation sur la base.] Notons $Psi_t := Psi_(|TTLL(phi_t (z))) : TTLL(phi_t (z)) simto TTLL(gg_t).$
+
+Ainsi, posons $A : t !> dd(J) (gg_t) circ Psi_t circ dd(J) (phi_t)^(-1) in "Sym"(T^*RR^(2n))$. Ainsi, $ind(A L) = ind(t !> dd(J) (gg_t) (vert(z))) = (mu,gg)$.
 Or par invariance de l'indice de #toprove[jsp trop quoi]
-
-La métrique $norm(dot)$ équipe $hor(z)$ et $hor(phi_t (z))$ d'un isomorphisme pour tout $t in SS_1$.
-$ind_C (V) &= ind (tau(V))\
-           &= ind (t !> j^*(lk_(z) L) plus.o dd(J)(phi_t (z))^mm ())
-
-$
 
 
 #todo[something about superscript]

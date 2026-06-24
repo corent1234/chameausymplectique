@@ -26,6 +26,7 @@
   source:todo_type(aqua,"À sourcer"),
   link:todo_type(fuchsia,"À lier dans le document"),
   draw:todo_type(purple,"À dessiner"),
+  needhelp:todo_type(navy,"Need help"),
 )
 
 
@@ -34,6 +35,7 @@
 #let tolink(arg) = margin-note(stroke:todo_types.link.stroke)[#arg]
 #let tosource(arg) = margin-note(stroke:todo_types.source.stroke)[#arg]
 #let todraw(arg) = margin-note(stroke:todo_types.draw.stroke)[#arg]
+#let needhelp(arg) = margin-note(stroke:todo_types.needhelp.stroke, fill:todo_types.needhelp.stroke)[#arg]
 #let y = margin-note(stroke:todo_types.y.stroke)[Pourquoi ?]
 
 

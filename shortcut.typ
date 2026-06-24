@@ -38,6 +38,8 @@
 #let ind = "ind"
 #let gf = "gf"
 #let sgn = "sgn"
+#let graph = "graph"
+
 #let HH = $bold(H)$
 #let II = $[0,1]$
 
