@@ -5,6 +5,8 @@
 
 #import "@preview/ouset:0.2.0":* //o=pour les over/underset
 #import "@preview/realhats:0.1.0": hat, realhats-list
+
+#let beret(arg) = hat(hat:"beret")[#arg]
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 #import "@preview/physica:0.9.8": pdv, taylorterm, dv, iprod
 
@@ -91,7 +93,9 @@ Ainsi, $Q(aa,bb;gg)$ est symétrique ssi $sigma(u + C u, v + C v)=0$ pour tous $
 
 #proposition[ Soient $aa,bb in Lambda(n)$ transverses.
 + L'application $Q(aa,bb) : gg in Lambda^0(bb) to Q(aa,bb;gg) in S(aa)$ est une bijection de $Lambda^0(bb)$ dans l'espace $S(aa)$ des formes bilinéaire symétriques sur $aa$.
-+ Si $gg in Lambda^0(aa) inter Lambda^0(bb)$ alors $Q(aa,bb;gg)$ et $Q(bb,gg;aa)$ sont conjuguées. ]<propQabc>
++ Si $gg in Lambda^0(aa) inter Lambda^0(bb)$ alors $Q(aa,bb;gg)$ et $Q(bb,gg;aa)$ sont conjuguées. 
++ Si $gg in Lambda(n)$ est transverse à $bb$ alors $Q(aa,bb;gg) sim.eq - Q(gg,bb;aa)$. En particulier, $sgn QQ = - sgn Q(gg,bb;aa)$]<propQabc>
+
 
 #proof[
 + Par transversalité de $aa$ et $bb$, Lagrangiens et par le fait que $ss$ soit non dégénérée $w in bb !>ss(w, dot )_(|aa) in aa^*$ est un isomorphisme qui induit un second isomorphisme $(aa to bb) sim.eq (aa to aa^*)$. On obtient alors le diagramme suivant :
@@ -114,6 +118,12 @@ $ Q(bb,gg;aa)(v) &= ss(C'v,v)\
 
 Or l'application $v!>u$ est la restriction $bb$ de la projection sur $aa$ parallèlement à $gg$ qui est un isomorphisme. D'où le résultat. 
 
++ Soient $C : aa to bb$ et $C' : gg to bb$ cadres lagrangiens associés à $gg$ et $aa$ respectivement. La projection sur $aa$ parallèlement à $bb$ induit un isomorphisme $rho : gg simto aa$ tel que tout $u in aa$ s'écrit $u = rho (u) + C rho(u)$. On en déduit que $C' = - C circ rho$. D'où pour $u in gg$ 
+$ Q(aa,bb;gg) rho (u) &= ss(C rho u, rho u)\
+                           &= - ss(C' u, rho u)\
+                           &= - ss(C'u, rho u + C rho u)\
+                           &= - ss(C'u, u )\
+                           &= - Q(gg,bb;aa) u.$
 
 #todo[est-ce que $S$ est orienté en $+-1$. Est-ce que la Emmanuel interprétation marche ?]
   //Soient $gg,gg' in Lambda^0(bb)$ et $C,C' : aa to bb$ tq $gg^( (')) = {u+ C ^( (')) u ; u in aa}$. On a alors, par hypothèse, $sigma(C u, dot)= sigma(C' u, dot )$ pour tout $ u in aa$. Or, $bb to aa^*; w !> omega(w, dot )$ est un isomorphisme donc $C=C'$ et par suite 
@@ -124,9 +134,15 @@ Fixons maintenant $aa,bb,gg in Lambda(n)$ tqs $bb trans gg$. On généralise dé
 Les Lagrangiens $aa$ et $bb$ étant isotropes, $aa inter bb$ le sera également et l'image par $pi : aa+ bb to (aa+bb) slash (aa inter bb)$ d'un Lagrangien $FF$ intersecté avec $aa+bb$ sera un Lagrangien de $aa+bb slash (aa inter bb)$. On pose donc dans ce cas
 #numbered_eq[$ QQ := Q(pi aa, pi bb; pi gg )$]<eqformequadquotient>
 
-#proposition[Si $gg$ est également transverse à $aa$ alors les formes $QQ$ et $Q(bb,gg;aa')$ vue comme une forme bilinéaire sur $bb slash (aa inter bb)$ sont conjuguées (donc en particulier de même signature).]
+#proposition[Si $gg$ est également transverse à $aa$ alors 
+$ind QQ = ind Q(bb,gg;aa)$] <propeqQCycle>
 
-#proof[Soit $C : bb to gg$ cadre Lagrangien pour $aa$. On montre facilement que $pi C$ descend au quotient en une application $tilde(C) : pi bb to pi gg$ qui est un cadre Lagrangien pour $pi aa$. Ainsi, $Q(bb,gg;aa)$ restreinte à $pi bb$ est égale à $Q(pi bb, pi gg; pi aa)$ qui est conjuguée à $ QQ := Q(pi aa, pi bb; pi gg )$ par le point 2. de la proposition @propQabc.]
+
+#proof[
+Montrons que les formes $QQ$ et $Q(bb,gg;aa)$ vue comme une forme bilinéaire sur $bb slash (aa inter bb)$ sont conjuguées.
+  Soit $C : bb to gg$ cadre Lagrangien pour $aa$. On montre facilement que $pi C$ descend au quotient en une application $tilde(C) : pi bb to pi gg$ qui est un cadre Lagrangien pour $pi aa$. Ainsi, $Q(bb,gg;aa)$ restreinte à $pi bb$ est égale à $Q(pi bb, pi gg; pi aa)$ qui est conjuguée à $ QQ := Q(pi aa, pi bb; pi gg )$ par le point 2. de la proposition @propQabc.
+Ainsi, puis puisque le noyau de la forme $Q(gg,bb;aa)$ est $aa inter bb$ on en déduit que réduction modulo $aa inter bb$ est de même indice qu'elle. D'où l'égalité.
+]
 
 
 
@@ -141,7 +157,7 @@ Les Lagrangiens $aa$ et $bb$ étant isotropes, $aa inter bb$ le sera également 
 
 #lemma[Pour tout $gg in Lambda^k(aa)$ il existe une submersion $R$ définie sur un voisinage ouvert $cal(U)$ de $gg$ et à valeur dans $S(aa inter gg)$ tqe :
 + pour tout $gg' in cal(u), dim ker R(gg') =  dim aa inter gg'$
-+ $dd(R)(gg) =: q_(aa inter gg) $ soit la restriction de $S(aa) to S(aa inter gg)$.] #todo[ pas sur de garder la notation $q_(aa inter gg)$]
++ $dd(R)(gg) =: q_(aa inter gg) $ soit la restriction de $S(aa) to S(aa inter gg)$.]
 
 
 #proof[Soit $gg in Lambda^k(aa)$ et $bb in Lambda^0(aa) inter Lambda^0(bb)$. Dans une base adaptée de $aa$ on a :
@@ -171,10 +187,15 @@ Notons tout de suite quelques propriétés immédiates du nombres d'indice ainsi
 
 On cherche désormais à obtenir un indice indépendant de $aa$ pour les chemins, ce que ne permet pas la @propdefLaa.
 
-#definition[Pour $aa,aa';bb,bb' in Lambda(n)$ tels que $aa,aa'$ soient transverses à $bb,bb'$ on note $s(aa,aa';bb,bb')$ l'indice de Maslov d'un boucle reliant $bb$ à $bb'$ en]
-#todo[introduire $s$]
+#definition[Pour $aa,aa';bb,bb' in Lambda(n)$ tels que $aa,aa'$ sont transverses à $bb,bb'$ on note $s(aa,aa';bb,bb')$ l'indice de Maslov d'un chemin reliant $bb'$ à $bb$ dans $Lambda^0(aa)$ suivi d'un chemin reliant $bb$ à $bb'$ dans $Lambda^0 (aa')$.
+]
 
-#proposition[Pour $aa,aa in Lambda(n)$ et $bb,bb' in Lambda^0(aa) inter Lambda^0 (aa')$ :
+#remark[Pour $aa,aa' in Lambda(n)$ et $L : II to Lambda(n)$ $s$ relient les indices de Maslov de $L$ relativement à $aa$ et $aa'$ par la formule
+$ [L:aa'] = [L:aa] + s(aa,aa'; L_0,L_1). $]
+
+#todraw[Le J c'est le $s$]
+
+#proposition[Pour $aa,aa' in Lambda(n)$ et $bb,bb' in Lambda^0(aa) inter Lambda^0 (aa')$ :
 $ s(aa,aa';bb,bb') = 1/2 (sgn Q(aa,aa';bb) - sgn Q (aa,aa' ;bb)) $] <propcalculsaabb>
 
 #remark[Dans la proposition ci-dessus $aa$ et $aa'$ ne sont _a priori_ pas transverses. Les formes quadratiques $Q(aa,aa';bb)$ et $Q(aa,aa';bb)$ sont à prendre au sens de @eqformequadquotient.]
@@ -203,25 +224,31 @@ Si l'on suppose que $gg cc aa +aa' $ alors on démontre facilement #toprove[conj
 #proposition[L'indice $s$ est antisymétrique. Soient $aa,aa' in Lambda(n)$ et $ bb,bb' in Lambda^0(aa) inter Lambda^0(aa'), s(aa, aa' ; bb, bb') = - s(bb,bb';aa,aa'). $] #tosource[Hormander, antisymétrie ]
 
 #proof[Soient $C_1 : aa to bb$ et $C_2 : bb to aa$ cadres Lagrangiens pour $aa'$ et $bb'$ respectivement. Choisissons $(x,y)$ coordonnées sur $FF$ adaptées à la décomposition $aa plus.o bb$ et considérons le symplectomorphisme $ phi : & FF & to & FF \ & (x,y) & !> & (-y,x). $
-qui permute $aa <-> bb$ et $aa' <-> bb'$ et conjugue $C_1$ et $C_2$. Par suite, $Q(aa,bb;aa') = ss(C_1, dot)_(|aa) = ss(phi C_1, phi )_(|aa) sim.eq ss(C_2, dot)_(|bb) = Q(bb,aa;bb')$. Or par #tolink[lien avec la permutation de $QQ$], $sgn Q(bb,aa;bb') = sgn Q(bb,aa; bb')$. Cette formule restant vraie en remplaçant $aa$ par $aa'$, par la @propcalculsaabb on trouve 
+qui permute $aa <-> bb$ et $aa'<-> bb'$ et conjugue $C_1$ et $C_2$. Par suite, $Q(aa,bb;aa') = ss(C_1, dot)_(|aa) = ss( phi C_1 phi^mm phi , phi )_(|aa) = ss(C_2 phi, phi)_(|aa) = Q(bb,aa;bb') circ phi$. Par la @propeqQCycle et la @propQabc et par symétrie des rôles de $aa,aa'$ et de $bb,bb'$ :
+ 
+#todo[la liouville et le smaslov sont invariants par homotpie.]
+
+//Cette formule restant vraie en remplaçant $aa$ par $aa'$, par la @propcalculsaabb on trouve 
 $ 
-s(aa,aa';bb,bb') &= 1/2(Q(aa,aa';bb)-Q(aa,aa';bb'))\
-                 &= -1/2 (Q(aa',bb;aa) - Q(aa',bb';aa))\
-                 &= -1/2 (sgn Q(bb,aa'; bb')-sgn Q())\
-                 &= -1/2 (sgn Q(bb,bb';aa') - sgn Q(bb,bb';aa))\
-                 &= -s(bb,bb';aa,aa')
+s(aa,aa';bb,bb') &= 1/2(sgn Q(aa,aa';bb)-sgn Q(aa,aa';bb'))\
+                 &= 1/2 (sgn Q(aa',bb;aa) - sgn Q(aa',bb';aa))\
+                 &= 1/2 (sgn Q(aa',bb;aa) + sgn Q(aa,bb';aa'))\
+                 &= 1/2 (sgn Q(bb,aa'; bb') + sgn Q(bb', aa; bb))\
+                 &= 1/2 (- sgn Q(bb',aa'; bb) + sgn Q(bb', aa; bb))\
+                 &= - 1/2 (sgn Q(bb,bb';aa') - sgn Q(bb,bb';aa))\
+                 &= - s(bb,bb';aa,aa').
 $
-] #todo[I'm too tired for this shit]
+]
 
 #propdef[Soit $L:[0,1] to Lambda(n)$ et $aa in Lambda^0(L_0) inter Lambda^0(L_1)$. L'entier $ ind (L) := [L:aa] + ind Q(L_1,aa;L_0)$ ne dépend pas du choix de $aa$. On l'appelle *indice de Maslov-Duistermaat de $L$*.
 ]<defMD>
 
-#proof[Soit $aa' in Lambda(n)$ transverse à $L_0$ et $L_1$. La forme quadratique $Q(L_1,aa;L_0)$ étant non dégénérée, $ind Q(L_1,aa;L_0)= n - 1/2 sgn Q(L_1,aa;L_0)$. Ainsi, par #tolink[Oui le calcul]
+#proof[Soit $aa' in Lambda(n)$ transverse à $L_0$ et $L_1$. La forme quadratique $Q(L_1,aa;L_0)$ étant non dégénérée, $ind Q(L_1,aa;L_0)= n - 1/2 sgn Q(L_1,aa;L_0)$. Ainsi, par la @propcalculsaabb,
 
 $[L:aa']-ind Q(L_1,aa';L_0) &= [L:aa] + s(aa,aa';L_0,L_1) + ind Q(L_1,aa';L_0)\
                           &= [L:aa'] - s(L_0,L_1;aa,aa') + ind Q(L_1,aa';L_0)\
                           &= [L:aa'] +n - 1/2(sgn Q(L_1,aa;L_0) - sgn Q(L_1, aa';L_0) + Q(L_1,aa';L_0))\
-                          &= [L:aa'] + ind Q(L_1,aa;L_0)
+                          &= [L:aa'] - ind Q(L_1,aa;L_0)
 $
 ] 
 
@@ -246,13 +273,17 @@ On considère alors la forme quadratique$ Q(L_1, aa; L_0) : & L_1 &to & RR \ & u
 #proposition[Soit $L: [0,1] to Lambda(n)$ chemin continu.
   + L'entier $ind(L)$ ne dépend que de la classe d'homotopie de $L$ (a extrémités fixées).
   + L'indice est invariant par l'action de $"Sym"(F)$.
-  + Si $M : SS_1 to Lambda(n)$ est une boucle tqe $M_0=L_1$ alors $ind(L*M) = ind(L) + ind(M)$. ]<propMD>
+  + Si $M : SS_1 to Lambda(n)$ est une boucle tqe $M_0=L_1$ alors $ind(L*M) = ind(L) + ind(M)$. 
+  + Pour tout $hat(L) : II to Lambda(m)$, $ind(L plus.o hat(L)) = ind(L) + ind(hat(L))$.
+]<propMD>
+
 
   #proof[
     Fixons $aa in Lambda(n)$ transverse à $L_0$ et $L_1$ et $L' : [0,1] to Lambda(n)$ tq $L_0'=L_1$ et $L_1'=L_0$.
   + Soit $M : [0,1] to Lambda(n)$ homotope à $L$ et de mêmes extrémités. Alors les boucles $L*L'$ et $L*L'$ sont homotopes donc $[L:aa]=[M:aa]$ par invariance par homotopie de l'indice de Maslov pour les boucles.
   + Soit $A in "Sym"(FF,sigma)$. L'invariance de l'indice de Maslov par l'action de $"Sym"(FF)$ donne $[L:aa]=ind(L*L')=ind(A L *A L' ) = [A L', A aa]$. Puis $Q(L_1,aa;L_0)$ et $Q(A L_1, A aa; A L_0)$ sont clairement conjugués donc de même indice. Ce qui conclut.
   + On a par additivité de l'indice de Maslov $[L*M:aa] = ind(L*M*L') = ind(L'*L*M)=ind(L*L') + ind(M)$. Puis du fait que $ind Q(L_1,aa;L_0)$ ne dépende que des extrémités du chemin considéré et par 1., on trouve $ind(L*M) = ind(L)+ind(M)$.
+  + Soit $aa in Lambda(n)$ et $beret(aa) in Lambda(m)$ tels que $aa$ soit transverse à $L_0$ et $L_1$ et $ beret(aa)$ soit transverse à $beret(L)_0$ et $beret(L)_1$. Par additivité de l'indice de Maslov pour les boucles $[L plus.o beret(L):aa plus.o beret(aa)] = [L:aa] + [beret(L): beret(aa)]$. Puis si $C : L_1 to aa$ est le cadre lagrangien associé à $L_0$ et $beret(C) : beret(L)_1 to beret(aa)$ celui associé à $beret(L)_0$. Alors $C plus.o beret(C) : L_1 plus.o beret(L)_1 to aa plus.o beret(aa) $ est le cadre lagrangien associé à $L_0 plus.o beret(L)_0$. Ce qui permet de conclure.
 ]
 
 #remark[En général, l'indice de Maslov-Duistermaat n'est pas additif pour la concaténation de chemins. Par exemple en posant $L : t in [0,1] !> "e"^(i pi/2 t) (0 times RR)$ et $L' : t in [0,1] !> "e"^(i pi/2 (t+1)) ( 0 times RR)$ on trouve $ind(L*L') = 1 != ind(L)+ind(L')=2$. ]
@@ -378,7 +409,8 @@ $Q(L_1,aa;L_0) &= omega_(T^* RR^(2)) (C u,u)\
                &= 1/2 ( omega_(RR^2)(i u,u))\
                &= 1/2 Im (overline(i u)u)\
                &= - 1/2 norm(u).$
-Ainsi, $ind Q(L_1,aa;L_0) = -2$.
+
+ Ainsi, $ind Q(L_1,aa;L_0) = -2$.
 ]
 
 #needhelp[Calcul des formes quadragénérarices.]
@@ -590,14 +622,20 @@ ind_C (Gamma) &= ind(tau(Gamma)) - ind(tau(V))+ ind (tau(V)) - ind(tau(C))\
 
 Reste donc à calculer $ind_C (V) = ind( tau V) = ind (dd(J) (z).vert (z) plus.o dd(J) (phi_t (z)).vert (phi_t (z))) = ind( t!>  dd(J) (phi_t (z)).vert (phi_t (z)))$ par additivité de l'indice de Maslov-Duistermaat vis-à-vis de la somme directe. Posons $L : t!>  dd(J) (phi_t (z)).vert (phi_t (z)).$
 
-Or on dispose d'un application canonique $Psi : TTL -> TTL $ telle que pour tout $x in TL $, $Psi_(|TTLL(w)): TTLL(w) simto TTLL(pi_L x)$ est un symplectomorphisme et que, de plus, $Psi (vert(x)) = vert(pi_L x)$. #todraw[dessin de translation sur la base.] Notons $Psi_t := Psi_(|TTLL(phi_t (z))) : TTLL(phi_t (z)) simto TTLL(gg_t).$
+Or on dispose d'un morphisme canonique#footnote[Pour une structure Riemannienne fixée] de fibrés au dessus de $L$, $Psi : vert -> TL $ telle que pour tout $w in TLL$ $Psi_w := Psi_(|vert(w)) : vert(w) simto "T"_(pi_L (w)) L$ soit un isomorphisme. Alors $L_t = dd(J) phi_t (z) Psi_(phi_t (z)) ^(-1) T_(gg_t) L$. Or
+$A :& II times II &-> & Lambda(n)\
+  & (s,t) &mapsto &  dd(J) [s.phi_t (z)] Psi_(s.phi_t (z)) ^(-1) T_(gg_t) L$
+est une homotopie reliant $t!> dd(j) (gg_t) T_(gg_t) L$ à $L$. Ainsi $ind(L) = ind( t!> dd(j) (gg_t) T_(gg_t)L)= (mu(j), gg)$ et donc
+$ inf_gf space z = ind_phi space z + (mu(j), gamma) $
 
-Ainsi, posons $A : t !> dd(J) (gg_t) circ Psi_t circ dd(J) (phi_t)^(-1) in "Sym"(T^*RR^(2n))$. Ainsi, $ind(A L) = ind(t !> dd(J) (gg_t) (vert(z))) = (mu,gg)$.
-Or par invariance de l'indice de #toprove[jsp trop quoi]
+ #todraw[dessin de translation sur la base. + homotopie dans $RR^(2n).$]
 
 
-#todo[something about superscript]
-  #toprove[Proposition 2.x de Théret]
+//telle que pour tout $x in TL $, $Psi_(|TTLL(w)): TTLL(w) simto TTLL(pi_L x)$ est un symplectomorphisme et que, de plus, $Psi (vert(x)) = vert(pi_L x)$. Notons $Psi_t := Psi_(|TTLL(phi_t (z))) : TTLL(phi_t (z)) simto TTLL(gg_t).$
+
+//Ainsi, posons $A : t !> dd(J) (gg_t) circ Psi_t circ dd(J) (phi_t)^(-1) in "Sym"(T^*RR^(2n))$. Ainsi, $ind(A L) = ind(t !> dd(J) (gg_t) (vert(z))) = (mu,gg)$.
+
+
 ]
 
 #proposition[On a :
@@ -647,7 +685,7 @@ $ K(rho,c) = cases(
 
 Quitte à extraire, on peut supposer $forall m in NN, r_m in ]eps_m/2,eps_m[$ (cas convexe) ou $forall m in NN, r_m in ]rho- eps_m, rho_eps_m/2[$.
 
-Dans les deux cas, on a $gg_m = h'(r_m) <= c$ #tolink[majoration de la longueur]. Ainsi par #tosource[compacité de l'ensemble des géodésiques de longueur bornée par $c$] on peut supposer que la suite $(gg_m)_(m in NN)$ converge vers une géodésique fermée $gg$ (qui vérifie donc @eqencadrementmujgg).
+Dans les deux cas, on a $ell(gg_m) = h'(r_m) <= c$ (par concavité/convexité en $r_m$). Ainsi par #tosource[compacité de l'ensemble des géodésiques de longueur bornée par $c$] on peut supposer que la suite $(gg_m)_(m in NN)$ converge vers une géodésique fermée $gg$ (qui vérifie donc @eqencadrementmujgg).
  
 Dans le cas convexe, $r_m ->0$, $sup_(m in NN) h'(r_m) <=c <oo$ et $h_(eps_m) (eps_m) = h_(rho-eps) - c(rho _ 2 eps_m) to - c rho$ et dans le cas concave, on a $r_m to rho$, $h'(r_m) = ell(gg_m) to ell(gg)$.et $h_(eps_m)(r_m) to 0$. L'égalité demandée découle du passage à la limite dans @eqrm.
 ]
@@ -687,16 +725,16 @@ Ce résultat permet immédiatement de prouver le résultat suivant :
 
 #proof[Une telle isotopie $Phi$ déplacerait nécessairement l'image $J(U)$ d'un voisinage de Weinstein $(J,U)$ de $j$. Laquelle est de capacité  $c(J(U)) >= c_"gf" (L)$ ce qui est impossible par le #tolink[Chameau symplectique].]
 
-== Oui bonjour serait-il possible d'obtenir un titre pour cette partie
+== Oui bonjour serait-il possible d'obtenir un titre pour cette partie ?
 
 
 #todo[fixer $mu$]
-On note $ss$ la classe de Liouville du plongement $j$. $ss(gg):=int_gg j^* ll_(RR^(2n))$ la classe de Liouville.
+On note $ss$ la classe de Liouville du plongement $j$, $ss(gg):=int_gg j^* ll_(RR^(2n))$ et on fixe $mu$ un représentant de la classe de Maslov de $j$ : $mu(gg) := ind(t!> j_* T_(gg_t) L)$.
 
 Soit $rho >0$ suffisamment petit pour que $B_(rho)cc U$. On pose :
 $ norm(U)_(mu,rho) = sup {s>=0, -s mu(L) + B_(rho) cc U}$.
 
-#todraw[moving crown].
+#todraw[dessin moving crown].
 
 Pour $s in [0, norm(U)_(mu,rho)]$ on considère le symplectomorphisme
 $ T_s :& TLL & to &TLL \
